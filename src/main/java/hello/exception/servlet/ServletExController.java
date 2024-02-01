@@ -13,7 +13,7 @@ public class ServletExController {
 
     @GetMapping("/error-ex")
     public void errorEx() {
-        throw new RuntimeException("에외발생");
+        throw new RuntimeException("예외발생");
     }
 
     @GetMapping("/error-404")
@@ -25,4 +25,7 @@ public class ServletExController {
     public void error500(HttpServletResponse response) throws IOException {
         response.sendError(500);
     }
+
+
+
 }

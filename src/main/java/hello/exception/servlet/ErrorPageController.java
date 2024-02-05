@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class ErrorPageController {
 
-    //RequestDispatcher 상수로 정의되어 있음
+    //RequestDispatcher 상수로 정의되어 있음(에러에 대한 정보)
     public static final String ERROR_EXCEPTION = "javax.servlet.error.exception";
     public static final String ERROR_EXCEPTION_TYPE = "javax.servlet.error.exception_type";
     public static final String ERROR_MESSAGE = "javax.servlet.error.message";
@@ -32,6 +32,7 @@ public class ErrorPageController {
         return "error-page/500";
     }
 
+    // 에러에 대한 정보를 확인하기 위한 함수
     private void printErrorInfo(HttpServletRequest request) {
         log.info("ERROR_EXCEPTION: ex=", request.getAttribute(ERROR_EXCEPTION));
         log.info("ERROR_EXCEPTION_TYPE: {}", request.getAttribute(ERROR_EXCEPTION_TYPE));
@@ -40,6 +41,6 @@ public class ErrorPageController {
         log.info("ERROR_SERVLET_NAME: {}", request.getAttribute(ERROR_SERVLET_NAME));
         log.info("ERROR_STATUS_CODE: {}", request.getAttribute(ERROR_STATUS_CODE));
         log.info("dispatchType={}", request.getDispatcherType());
+        // 클라이언트로 발생한 요청인지, 오류 페이지를 출력하기 위한
     }
-
 }
